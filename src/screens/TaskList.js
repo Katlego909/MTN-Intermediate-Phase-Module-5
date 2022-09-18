@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, TextInput, ScrollView } from 'react-native';
 import Task from '../components/Tasks';
-import { db } from './firebase';
 import { useNavigation } from '@react-navigation/native';
 
 const TaskList = () => { 
@@ -10,30 +9,7 @@ const TaskList = () => {
     const [taskItems, setTaskItems] = useState([]);
 
     const navigation = useNavigation()
-
-    useEffect( () => {
-      db.collection('tasks')
-      .get()
-      .then(result => result.docs)
-      .then(docs => docs.map(doc => ({
-        id: doc.data().id, 
-        task: doc.data().task, 
-        createdAt: doc.data().createdAt,
-        completedAt: doc.data().completedAt
-      })))
-      .then(task => setTask(task))
-    }, [])
-
-  const addTask = () => {
-    db.collection=('tasks').add({
-      task: values.task,
-      createdAt: new Date(),
-      completedAt: null,
-    }).then(result => navigation.navigate('TaskList'))
-      .catch(err => console.log(err))
-  }
   
-
   const handleAddTask = () => {
     setTaskItems([...taskItems, task])
     setTask(null);
@@ -77,7 +53,7 @@ const TaskList = () => {
       <KeyboardAvoidingView 
         style={styles.writeTaskWrapper}>
         <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
-        <TouchableOpacity onPress={() => addTask()}>
+        <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>Add</Text>
           </View>

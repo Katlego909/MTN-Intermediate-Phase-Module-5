@@ -6,6 +6,8 @@ import LoginScreen from './src/screens/Login';
 import SignUpScreen from './src/screens/SignUp';
 import TaskList from './src/screens/TaskList';
 import VoiceNotes from './src/screens/VoiceNotes';
+import TasksList from './src/screens/TasksList';
+import AddTask from './src/screens/AddTask';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,8 +18,9 @@ export default function App() {
       <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
       <Stack.Screen name="SignUp" component={SignUpScreen} options={{headerShown: false}} />
       <Stack.Screen name="Dashboard" component={Dashboard} options={{title:"Dashboard"}} />
-      <Stack.Screen name="TaskList" component={TaskList} options={{title:"Task List"}} />
+      <Stack.Screen name="TasksList" component={TasksList} options={{title:"Tasks List"}} />
       <Stack.Screen name="VoiceNotes" component={VoiceNotes} options={{title:"Voice Notes"}} />
+      <Stack.Screen name="AddTask" component={AddTask} options={{title:"Add New Task"}} />
     </Stack.Navigator>
     </NavigationContainer>
   );

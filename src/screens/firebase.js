@@ -21,4 +21,16 @@ if (firebase.apps.length === 0) {
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+export const getTasks = () => {
+ return db.collection('tasks')
+  .get() 
+  .then(result => result.docs)
+  .then(docs => docs.map(doc => ({
+    id: doc.id, 
+    name: doc.data().name, 
+    createdAt: doc.data().createdAt,
+    completedAt: doc.data().completedAt
+  })))
+}
+
 export { auth, db };

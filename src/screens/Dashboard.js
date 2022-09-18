@@ -8,7 +8,7 @@ const Dashboard = () => {
     const navigation = useNavigation();
 
     const onTaskListPressed = () => {
-        navigation.navigate('TaskList');
+        navigation.navigate('TasksList');
     }
     const onVoiceNotesPressed = () => {
         navigation.navigate('VoiceNotes');

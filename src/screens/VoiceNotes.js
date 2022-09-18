@@ -3,8 +3,8 @@ import React from 'react';
 import { Button, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Audio } from 'expo-av';
 
-
 const VoiceNotes = () => {
+
     const [recording, setRecording] = React.useState();
     const [recordings, setRecordings] = React.useState([]);
     const [message, setMessage] = React.useState("");
